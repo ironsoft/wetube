@@ -4,11 +4,12 @@
   "description": "Cloning Youtube",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "KeunSung",
   "license": "ISC",
   "dependencies": {
+    "@babel/node": "^7.8.4",
     "express": "^4.17.1"
   }
 }
