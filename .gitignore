@@ -1,4 +1,4 @@
-node_modules
+/node_modules
 # Logs
 logs
 *.log
@@ -107,3 +107,10 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 package-lock.json
+
+# Mac
+.DS_Store
+
+# 파일 업로드 폴더
+/uploads
+/assets

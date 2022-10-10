@@ -1,0 +1,26 @@
+.edit-profile__form {
+    div {
+        text-align: center;
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+    }
+    label {
+        font-size: 14;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+}
+
+.edit-profile__password {
+    margin-top: 50px;
+    text-align: center;
+    a {
+        text-decoration: underline;
+    }
+}

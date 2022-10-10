@@ -1,0 +1,15 @@
+doctype html 
+html(lang="ko")
+    head 
+        title #{pageTitle} | #{siteName}
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css")
+        link(rel="stylesheet" href="/static/css/styles.css")
+
+    body 
+        include partials/header.pug
+                    
+        main
+            block content
+
+        include partials/footer.pug
+    script(src="/static/js/main.js")

@@ -1,0 +1,16 @@
+extends ../base
+include ../mixins/video
+
+block content 
+    a(href="/users/edit") 
+        div.profile__data
+            if !loggedInUser.avatarUrl
+                img(src="/uploads/avatars/user-solid.svg").avatar
+            else
+                img(src="/" + user.avatarUrl).avatar
+            h3=user.name
+    div.video-grid
+        each video in user.videos 
+            +video(video)
+        else 
+            span.empty__message No video found.
