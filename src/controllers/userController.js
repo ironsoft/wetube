@@ -255,12 +255,14 @@ export const postEdit = async (req, res) => {
 export const remove = (req, res) => res.send("remove User");
 export const logout = (req, res) => {
     req.session.destroy();
+    req.flash("info", "Bye");
     return res.redirect("/");
 };
 
 export const getChangePassword = (req, res) => {
     // 만약 사용자가 깃헙으로 가입해서 비번이 없다면,
     if (req.session.user.socialOnly === true) {
+        req.flash("error", "Can't change password");
         return res.redirect("/")
     }
     return res.render("users/change-password", {pageTitle: "Change Password"});
@@ -294,8 +296,8 @@ export const postChangePassword = async (req, res) => {
     
     user.password = newPassword;
     await user.save();
- 
     // send notification
+    req.flash("info", "Password Updated");
     return res.redirect("/users/logout");
 }
 

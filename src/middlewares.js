@@ -14,6 +14,7 @@ export const protectorMiddleware = (req, res, next) => {
         return next();
     // 로그인하지 않은 사람이면,
     } else {
+        req.flash("error", "Log in first");
         return res.redirect("/login");
     }
 
@@ -26,6 +27,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
         return next();
     // 로그인 한 사람이면,
     } else {
+        req.flash("error", "Not authorized");
         return res.redirect("/");
     }
 }
@@ -51,3 +53,4 @@ export const videoUpload = multer({
     }
 
 })
+
