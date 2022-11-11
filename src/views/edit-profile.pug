@@ -8,7 +8,10 @@ block content
             if !loggedInUser.avatarUrl
                 img(src="/uploads/avatars/user-solid.svg")
             else
-                img(src=loggedInUser.avatarUrl, crossorigin width="100", height="100")
+                if isHeroku 
+                    img(src=loggedInUser.avatarUrl, crossorigin width="100", height="100")
+                else 
+                    img(src= '/' + loggedInUser.avatarUrl, crossorigin width="100", height="100")
         label(for="avatar") Avatar 
         input(type="file", id="avatar", name="avatar", accept="image/*")
         input(placeholder="Name", name="name", type="text",  required, value=loggedInUser.name)

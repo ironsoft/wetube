@@ -20,9 +20,15 @@ header
                         else
                             if loggedInUser.avatarUrl 
                                 if loggedInUser.avatarUrl.toString().includes("github")
-                                    img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
+                                    if isHeroku
+                                        img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
+                                    else 
+                                        img.header__avatar(src= '/' + loggedInUser.avatarUrl crossorigin)
                                 else 
-                                    img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
+                                    if isHeroku
+                                        img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
+                                    else 
+                                        img.header__avatar(src= '/' + loggedInUser.avatarUrl crossorigin)
 
             else
                 li 
