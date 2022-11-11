@@ -18,10 +18,11 @@ header
                         if !loggedInUser.avatarUrl
                             i.fa.fa-user
                         else
-                            if loggedInUser.avatarUrl.toString().includes("github")
-                                img.header__avatar(src=loggedInUser.avatarUrl)
-                            else 
-                                img.header__avatar(src="/" + loggedInUser.avatarUrl)
+                            if loggedInUser.avatarUrl 
+                                if loggedInUser.avatarUrl.toString().includes("github")
+                                    img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
+                                else 
+                                    img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
 
             else
                 li 

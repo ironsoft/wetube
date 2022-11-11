@@ -204,7 +204,7 @@ export const postEdit = async (req, res) => {
         body: {name, email, username, location},
         file,
     } = req;
-
+    console.log(file);
     // 사용자가 username 을 변경하려고 한다면 
     if (req.session.user.username !== username) {
         // username 이 DB상 존재하는지 알아보자.
@@ -235,7 +235,7 @@ export const postEdit = async (req, res) => {
 
     const updatedUser = await User.findByIdAndUpdate(_id, {
         // user 가 avatar 를 업데이트 하지 않는 경우
-        avatarUrl: file ? file.path : avatarUrl,
+        avatarUrl: file ? file.location : avatarUrl,
         name,
         email,
         username,
@@ -254,8 +254,8 @@ export const postEdit = async (req, res) => {
 
 export const remove = (req, res) => res.send("remove User");
 export const logout = (req, res) => {
+    // req.flash("info", "Bye");
     req.session.destroy();
-    req.flash("info", "Bye");
     return res.redirect("/");
 };
 

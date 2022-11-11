@@ -1,4 +1,18 @@
 import multer from "multer";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
+
+const s3 = new aws.S3({
+    credentials: {
+        accessKeyId: process.env.AWS_ID,
+        secretAccessKey: process.env.AWS_SECRET,
+    }
+})
+
+const multerUploader = multerS3({
+    s3: s3,
+    bucket: 'wetube-ishopfloor',
+})
 
 export const localMiddleware = (req, res, next) => {
     res.locals.loggedIn = Boolean(req.session.loggedIn);
@@ -41,7 +55,10 @@ export const avatarUpload = multer({
     limits: {
         //3000000 bytes = 3MB
         fileSize: 3000000,
-    }
+    },
+    storage: multerUploader,
+    acl: 'public-read',
+    // "s3:x-amz-acl": ["public-read"],
 })
 
 // video 파일 업로드
@@ -50,7 +67,8 @@ export const videoUpload = multer({
     limits: {
         // 10000000 bytes = 10MB
         fileSize: 10000000,
-    }
-
+    },
+    storage: multerUploader,
+    acl: 'public-read',
 })
 
